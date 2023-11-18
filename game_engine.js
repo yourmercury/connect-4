@@ -37,8 +37,8 @@ class GameEngine {
     const disc = this.discs[player];
     if (!disc) throw "no player found";
 
-    this.board.forEach((item, i)=>{
-        this.board[i].reverse();
+    this.board.forEach((item, i) => {
+      this.board[i].reverse();
     });
 
     let winList = this.getWinList();
@@ -53,8 +53,8 @@ class GameEngine {
     const allWinsList = [];
     for (let disc of this.discs) {
       let wins = [
-        //   ...this.getHorizontalWinList(disc),
-        //   ...this.getVerticalWinList(disc),
+        ...this.getHorizontalWinList(disc),
+        ...this.getVerticalWinList(disc),
         ...this.getDiagonalWinList(disc),
       ];
 
@@ -137,7 +137,10 @@ class GameEngine {
   }
 
   getDiagonalWinList(disc) {
-    const board = [...this.board];
+    const board = [];
+    this.board.forEach((item, i) => {
+      board.push([...item]);
+    });
     const pWins = [];
     for (let i = 0; i < board.length; i++) {
       let first = board[i].indexOf(disc);
@@ -190,7 +193,7 @@ class GameEngine {
       }
     }
 
-    if(pWins.length) console.log("we have a winner");
+    if (pWins.length) console.log("we have a winner");
     return pWins;
   }
 }
