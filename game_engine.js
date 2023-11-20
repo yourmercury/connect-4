@@ -71,7 +71,7 @@ class GameEngine {
 
     for (let j = 0; j < cols; j++) {
       let first = board[j].indexOf(disc);
-      let last = board[j].lastIndexOf(disc);
+      let last = board[j][first+this.connectCount -1];
 
       let diff = last - first + 1;
 
