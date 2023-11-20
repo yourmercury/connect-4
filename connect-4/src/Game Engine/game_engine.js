@@ -197,3 +197,5 @@ class GameEngine {
     return pWins;
   }
 }
+
+export default GameEngine
